@@ -65,8 +65,8 @@ export const MATERIALS_LIST = {
         },
         countGr: 1500,
         consumption: {
-            minGr: 150,
-            maxGr: 200,
+            minGr: 100,
+            maxGr: 300,
         },
     },
     zap3: {
