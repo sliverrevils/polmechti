@@ -24,6 +24,7 @@ export function calcPlane({
         (square * MATERIALS_LIST[position === "vertical" ? "kv15" : "ep2k15"].consumption.maxGr) /
         1000;
     let zapRes = (square * MATERIALS_LIST.zap3.consumption.maxGr) / 1000;
+    let lakRes = (square * MATERIALS_LIST.lak15.consumption.maxGr) / 1000;
 
     //ДОБАВЛЯЕМ 10%
     if (isAddTenProc) {
@@ -31,6 +32,7 @@ export function calcPlane({
         gruntRes = add10Procent(gruntRes);
         glueRes = add10Procent(glueRes);
         zapRes = add10Procent(zapRes);
+        lakRes = add10Procent(lakRes);
     }
 
     return {
@@ -38,5 +40,6 @@ export function calcPlane({
         grunt: fixGoodsNumber(gruntRes),
         glue: fixGoodsNumber(glueRes * stoneLayer),
         zap: fixGoodsNumber(zapRes),
+        lak: fixGoodsNumber(lakRes),
     };
 }

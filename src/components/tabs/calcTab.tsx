@@ -71,7 +71,7 @@ export default function CalcTab() {
         const res = calcPlane({ square, position, stoneLayer, isAddTenProc });
 
         if (!res) return <></>;
-        const { glue, grunt, stone, zap } = res;
+        const { glue, grunt, stone, zap, lak } = res;
         return (
             <div className="flex flex-col gap-2 border border-white rounded-md px-4 py-2">
                 <div className="flex justify-between items-center">
@@ -98,6 +98,10 @@ export default function CalcTab() {
                 <div className="flex justify-between items-center">
                     <div>Запечатка {zap} кг</div>
                     <LinkBuyMaterial item="zap3" />
+                </div>
+                <div className="flex justify-between items-center">
+                    <div>Лак {lak} кг</div>
+                    <LinkBuyMaterial item="lak15" />
                 </div>
             </div>
         );

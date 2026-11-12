@@ -78,8 +78,8 @@ export const MATERIALS_LIST = {
         },
         countGr: 3000,
         consumption: {
-            minGr: 1000,
-            maxGr: 1200,
+            minGr: 1200,
+            maxGr: 1400,
         },
     },
     she12: {
