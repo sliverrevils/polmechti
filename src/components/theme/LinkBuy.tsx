@@ -13,7 +13,7 @@ export function LinkBuyMaterial({ item }: { item: keyof typeof MATERIALS_LIST })
                     width={ozon.width}
                     height={ozon.height}
                     alt="ozonImg"
-                    className="w-10 h-10 rounded-xl"
+                    className="w-7 h-7 rounded-xl"
                 />
             </Link>
         </div>
@@ -34,7 +34,7 @@ export function LinkBuyStone({ code }: { code: string }) {
                         width={ozon.width}
                         height={ozon.height}
                         alt="ozonImg"
-                        className="w-10 h-10 rounded-xl"
+                        className="w-7 h-7 rounded-full"
                     />
                 </Link>
             )}

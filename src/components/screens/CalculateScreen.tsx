@@ -8,57 +8,11 @@ import { IConsumptionStone } from "@/types/types";
 import { MenuItem, Select, Slider, Switch, TextField } from "@mui/material";
 import { ACCENT } from "@/constants/style";
 import { LinkBuyMaterial, LinkBuyStone } from "../theme/LinkBuy";
+import { marksHor, marksVer } from "@/constants/sliderPoints";
+import { calculatePackages } from "@/utils/calculatePackages";
+import CalculatedGood from "../common/CalculatedGood";
 
-const marksHor = [
-    {
-        value: 1,
-        label: "1см",
-    },
-    {
-        value: 1.5,
-        label: "1.5см",
-    },
-    {
-        value: 2,
-        label: "2см",
-    },
-    {
-        value: 2.5,
-        label: "2.5см",
-    },
-    {
-        value: 3,
-        label: "3см",
-    },
-];
-const marksVer = [
-    {
-        value: 0.6,
-        label: "0.6см",
-    },
-    {
-        value: 0.8,
-        label: "0.8см",
-    },
-    {
-        value: 1,
-        label: "1см",
-    },
-    {
-        value: 1.2,
-        label: "1.2см",
-    },
-    {
-        value: 1.5,
-        label: "1.5см",
-    },
-    {
-        value: 2,
-        label: "2см",
-    },
-];
-
-export default function CalcTab() {
+export default function CalculateScreen() {
     const [square, setSquare] = useState<number>(0);
     const [position, setPosition] = useState<keyof IConsumptionStone>("horizont");
     const [stoneLayer, setStoneLayer] = useState(LAYER_STONE.horizont.min);
@@ -72,37 +26,19 @@ export default function CalcTab() {
 
         if (!res) return <></>;
         const { glue, grunt, stone, zap, lak } = res;
+
         return (
-            <div className="flex flex-col gap-2 border border-white rounded-md px-4 py-2">
+            <div className="flex flex-col gap-2  rounded-md  py-2">
                 <div className="flex justify-between items-center">
                     <div>
                         Камень {stone} кг ({Math.ceil(stone / 20)} уп.)
                     </div>
                     <LinkBuyStone code={selectedStone} />
                 </div>
-                <div className="flex justify-between items-center">
-                    <div>Грунт {grunt} кг</div>
-                    <LinkBuyMaterial item="gr1" />
-                </div>
-
-                <div className="flex justify-between items-center">
-                    <div>
-                        Клей {position === "vertical" ? "вертикальный" : "горизонтальный"} {glue} кг
-                    </div>
-                    {position === "vertical" ? (
-                        <LinkBuyMaterial item="kv15" />
-                    ) : (
-                        <LinkBuyMaterial item="ep2k15" />
-                    )}
-                </div>
-                <div className="flex justify-between items-center">
-                    <div>Запечатка {zap} кг</div>
-                    <LinkBuyMaterial item="zap3" />
-                </div>
-                <div className="flex justify-between items-center">
-                    <div>Лак {lak} кг</div>
-                    <LinkBuyMaterial item="lak15" />
-                </div>
+                <CalculatedGood count={grunt} item="egr" />
+                <CalculatedGood count={glue} item={position === "vertical" ? "kv" : "ep2k"} />
+                <CalculatedGood count={zap} item="zap" />
+                <CalculatedGood count={lak} item="lak" />
             </div>
         );
     }, [square, position, stoneLayer, isAddTenProc]);
@@ -162,9 +98,9 @@ export default function CalcTab() {
                 ))}
             </Select>
 
-            <div className="flex *:w-full *:text-center  *:border-[#D77B45]  *:rounded-md *:px-4 *:py-2 *:cursor-pointer">
+            <div className="flex *:w-full *:text-center  *:border-accent  *:rounded-md *:px-4 *:py-2 *:cursor-pointer">
                 <div
-                    className={`${position === "horizont" ? "border text-[#D77B45]" : "border-0 text-white"}`}
+                    className={`${position === "horizont" ? "border text-accent" : "border-0 text-white"}`}
                     onClick={() => {
                         if (position === "horizont") return;
                         setPosition(() => "horizont");

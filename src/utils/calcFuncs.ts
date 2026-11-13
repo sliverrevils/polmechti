@@ -19,12 +19,11 @@ export function calcPlane({
     if (square <= 0) return false;
 
     let stonesRes = (square * STONE_CONSUMPTION[position]) / 1000;
-    let gruntRes = (square * MATERIALS_LIST.egr2.consumption.maxGr) / 1000;
+    let gruntRes = (square * MATERIALS_LIST.egr.consumption.maxGr) / 1000;
     let glueRes =
-        (square * MATERIALS_LIST[position === "vertical" ? "kv15" : "ep2k15"].consumption.maxGr) /
-        1000;
-    let zapRes = (square * MATERIALS_LIST.zap3.consumption.maxGr) / 1000;
-    let lakRes = (square * MATERIALS_LIST.lak15.consumption.maxGr) / 1000;
+        (square * MATERIALS_LIST[position === "vertical" ? "kv" : "ep2k"].consumption.maxGr) / 1000;
+    let zapRes = (square * MATERIALS_LIST.zap.consumption.maxGr) / 1000;
+    let lakRes = (square * MATERIALS_LIST.lak.consumption.maxGr) / 1000;
 
     //ДОБАВЛЯЕМ 10%
     if (isAddTenProc) {
