@@ -17,17 +17,21 @@ export default function CalculatedGood({
 
     return (
         <div className="border border-gray-800 flex flex-col px-3 py-1 rounded-2xl">
-            <div className="flex justify-between items-center">
-                <div className="flex flex-col">
-                    <div className="flex gap-3">
-                        <div className="flex gap-1">
+            <div className="flex justify-between items-center gap-2">
+                <div className="flex flex-col w-full ">
+                    <div className="flex justify-between gap-3">
+                        <div className="flex gap-1 ">
                             <div>{currentItem.name}</div>
+                        </div>
+                        <div className="flex gap-2  self-end text-nowrap ">
                             <div className="text-accent font-extrabold"> {count} </div>
                             <div>кг</div>
+                            <div className="text-accent font-bold">
+                                {calcedPackages.totalPrice} ₽
+                            </div>
                         </div>
-                        <div className="text-accent font-bold">{calcedPackages.totalPrice} ₽</div>
                     </div>
-                    <div className="flex gap-2 ml-4 text-gray-500 text-sm">
+                    <div className="flex gap-2 ml-4 text-gray-500 text-sm justify-center">
                         <div className="text-gray-300">
                             {calcedPackages.packages.reduce<string>(
                                 (acc, el, idx) =>

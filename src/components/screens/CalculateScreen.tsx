@@ -1,23 +1,24 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Input from "../theme/Input";
+
 import { calcPlane } from "@/utils/calcFuncs";
 import { LAYER_STONE, MATERIALS_LIST, STONES_LIST } from "@/constants/goodsList";
 import { IConsumptionStone } from "@/types/types";
 import { MenuItem, Select, Slider, Switch, TextField } from "@mui/material";
 import { ACCENT } from "@/constants/style";
 import { LinkBuyMaterial, LinkBuyStone } from "../theme/LinkBuy";
-import { marksHor, marksVer } from "@/constants/sliderPoints";
+import { marksHor, marksVer } from "@/constants/marks";
 import { calculatePackages } from "@/utils/calculatePackages";
 import CalculatedGood from "../common/CalculatedGood";
+import Image from "next/image";
 
 export default function CalculateScreen() {
     const [square, setSquare] = useState<number>(0);
     const [position, setPosition] = useState<keyof IConsumptionStone>("horizont");
     const [stoneLayer, setStoneLayer] = useState(LAYER_STONE.horizont.min);
     const [isAddTenProc, setIsAddTenProc] = useState(true);
-    const [selectedStone, setSelectedStone] = useState(STONES_LIST.at(0)!.code);
+    const [selectedStone, setSelectedStone] = useState<keyof typeof STONES_LIST>("bordo");
 
     const resultMemo = useMemo(() => {
         if (!!!square) return <></>;
@@ -25,7 +26,7 @@ export default function CalculateScreen() {
         const res = calcPlane({ square, position, stoneLayer, isAddTenProc });
 
         if (!res) return <></>;
-        const { glue, grunt, stone, zap, lak } = res;
+        const { glueVer, grunt, stone, zap, lak, glueGor, glueGorZ, glueVerZ } = res;
 
         return (
             <div className="flex flex-col gap-2  rounded-md  py-2">
@@ -36,8 +37,12 @@ export default function CalculateScreen() {
                     <LinkBuyStone code={selectedStone} />
                 </div>
                 <CalculatedGood count={grunt} item="egr" />
-                <CalculatedGood count={glue} item={position === "vertical" ? "kv" : "ep2k"} />
+                <CalculatedGood count={glueVer} item={position === "vertical" ? "kv" : "ep2k"} />
+                <CalculatedGood count={glueVerZ} item={position === "vertical" ? "kvz" : "2kz"} />
+                <CalculatedGood count={glueGor} item="1k" />
+
                 <CalculatedGood count={zap} item="zap" />
+                <CalculatedGood count={lak} item="lak" />
                 <CalculatedGood count={lak} item="lak" />
             </div>
         );
@@ -91,11 +96,22 @@ export default function CalculateScreen() {
                 value={selectedStone}
                 onChange={(e) => setSelectedStone(e.target.value)}
             >
-                {STONES_LIST.map((stone) => (
-                    <MenuItem key={stone.code} value={stone.code}>
-                        {stone.name}
-                    </MenuItem>
-                ))}
+                {(Object.keys(STONES_LIST) as unknown as (keyof typeof STONES_LIST)[])
+                    .filter((key) => STONES_LIST[key].show)
+                    .map((key) => (
+                        <MenuItem key={STONES_LIST[key].price[20].sku.ozon} value={key}>
+                            <div className="flex items-center gap-4">
+                                <Image
+                                    src={`/stone/${key}.png`}
+                                    width={50}
+                                    height={50}
+                                    alt={STONES_LIST[key].name}
+                                    className="rounded-2xl aspect-square"
+                                />
+                                <div className="text-2xl">{STONES_LIST[key].name}</div>
+                            </div>
+                        </MenuItem>
+                    ))}
             </Select>
 
             <div className="flex *:w-full *:text-center  *:border-accent  *:rounded-md *:px-4 *:py-2 *:cursor-pointer">

@@ -20,8 +20,12 @@ export function calcPlane({
 
     let stonesRes = (square * STONE_CONSUMPTION[position]) / 1000;
     let gruntRes = (square * MATERIALS_LIST.egr.consumption.maxGr) / 1000;
-    let glueRes =
+    let glueVerRes =
         (square * MATERIALS_LIST[position === "vertical" ? "kv" : "ep2k"].consumption.maxGr) / 1000;
+    let glueVerZRes =
+        (square * MATERIALS_LIST[position === "vertical" ? "kvz" : "2kz"].consumption.maxGr) / 1000;
+    let glueGorRes = (square * MATERIALS_LIST["1k"].consumption.maxGr) / 1000;
+    let glueGorZRes = (square * MATERIALS_LIST["2kz"].consumption.maxGr) / 1000;
     let zapRes = (square * MATERIALS_LIST.zap.consumption.maxGr) / 1000;
     let lakRes = (square * MATERIALS_LIST.lak.consumption.maxGr) / 1000;
 
@@ -29,15 +33,19 @@ export function calcPlane({
     if (isAddTenProc) {
         stonesRes = add10Procent(stonesRes);
         gruntRes = add10Procent(gruntRes);
-        glueRes = add10Procent(glueRes);
+        glueVerRes = add10Procent(glueVerRes);
         zapRes = add10Procent(zapRes);
         lakRes = add10Procent(lakRes);
+        glueGorRes = add10Procent(glueGorRes);
     }
 
     return {
         stone: fixGoodsNumber(stonesRes * stoneLayer),
         grunt: fixGoodsNumber(gruntRes),
-        glue: fixGoodsNumber(glueRes * stoneLayer),
+        glueVer: fixGoodsNumber(glueVerRes * stoneLayer),
+        glueVerZ: fixGoodsNumber(glueVerZRes * stoneLayer),
+        glueGor: fixGoodsNumber(glueGorRes * stoneLayer),
+        glueGorZ: fixGoodsNumber(glueGorZRes * stoneLayer),
         zap: fixGoodsNumber(zapRes),
         lak: fixGoodsNumber(lakRes),
     };

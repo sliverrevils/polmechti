@@ -19,16 +19,12 @@ export function LinkBuyMaterial({ item }: { item: keyof typeof MATERIALS_LIST })
         </div>
     );
 }
-export function LinkBuyStone({ code }: { code: string }) {
-    let current = STONES_LIST.find((stone) => stone.code === code);
-
-    if (!current) {
-        current = STONES_LIST[0];
-    }
+export function LinkBuyStone({ code }: { code: keyof typeof STONES_LIST }) {
+    const current = STONES_LIST[code];
     return (
         <div className=" flex flex-col gap-1">
-            {!!current.links.ozon && (
-                <Link href={current.links.ozon.link} className="text-white" target="_blank">
+            {!!current.price[20].links.ozon && (
+                <Link href={current.price[20].links.ozon} className="text-white" target="_blank">
                     <Image
                         src={ozon}
                         width={ozon.width}
