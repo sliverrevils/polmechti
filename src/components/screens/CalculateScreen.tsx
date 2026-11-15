@@ -49,7 +49,7 @@ export default function CalculateScreen() {
                 {
                     // КЛЕЙ ЗИМНИЙ ?
                     // НА ГОРИЗОНТЕ ИСПОЛЬЗУЕМ 1К ИЛИ ЭП2К ?
-                    // 1К выгорает и желтеет (полеуретан) , ВЕРТИКАЛИ ТАКОЙ НЕТ
+                    // Однокомпонентный полеуретановый горизонтальный клей не защищет ултрафиолета и может со временем приобретать желтый оттенок и
                     isWinter ? (
                         <CalculatedGood
                             count={glueVerZ}
@@ -276,6 +276,12 @@ export default function CalculateScreen() {
                     Используем эпоксидный клей
                 </div>
             </label>
+            {!isUseEp2k && (
+                <div className="border border-accent-light text-accent-light px-4 py-2 ml-8 rounded-2xl">
+                    Однокомпонентный полиуретановый клей для горизонтальных поверхностей не обладает
+                    защитой от ультрафиолета и со временем может приобретать желтоватый оттенок.
+                </div>
+            )}
             <label className="flex gap-2 items-center">
                 <Switch
                     checked={isInHouse}

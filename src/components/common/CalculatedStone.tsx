@@ -1,5 +1,5 @@
 import { MATERIALS_LIST, STONES_LIST } from "@/constants/goodsList";
-import { LinkBuyMaterial } from "../theme/LinkBuy";
+import { LinkBuyMaterial, LinkBuyStone } from "../theme/LinkBuy";
 import { calculatePackages } from "@/utils/calculatePackages";
 
 export default function CalculatedStone({
@@ -39,7 +39,7 @@ export default function CalculatedStone({
                         <div>[ 20кг x {stoneBoxes} ]</div>
                     </div>
                 </div>
-                <LinkBuyMaterial item="lak" />
+                <LinkBuyStone code={stoneKey} />
             </div>
 
             {/* <pre className="opacity-40">{JSON.stringify(calcedPackages, null, 2)}</pre> */}

@@ -46,7 +46,7 @@ export default function CalculatedGood({
                         <div>{packString}</div>
                     </div>
                 </div>
-                <LinkBuyMaterial item="lak" />
+                <LinkBuyMaterial item={item} />
             </div>
 
             {/* <pre className="opacity-40">{JSON.stringify(calcedPackages, null, 2)}</pre> */}
