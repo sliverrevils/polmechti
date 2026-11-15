@@ -19,7 +19,8 @@ export function calcPlane({
     if (square <= 0) return false;
 
     let stonesRes = (square * STONE_CONSUMPTION[position]) / 1000;
-    let gruntRes = (square * MATERIALS_LIST.egr.consumption.maxGr) / 1000;
+    let grunt2KRes = (square * MATERIALS_LIST.egr.consumption.maxGr) / 1000;
+    let grunt1KRes = (square * MATERIALS_LIST.gr.consumption.maxGr) / 1000;
     let glueVerRes =
         (square * MATERIALS_LIST[position === "vertical" ? "kv" : "ep2k"].consumption.maxGr) / 1000;
     let glueVerZRes =
@@ -32,7 +33,8 @@ export function calcPlane({
     //ДОБАВЛЯЕМ 10%
     if (isAddTenProc) {
         stonesRes = add10Procent(stonesRes);
-        gruntRes = add10Procent(gruntRes);
+        grunt2KRes = add10Procent(grunt2KRes);
+        grunt1KRes = add10Procent(grunt1KRes);
         glueVerRes = add10Procent(glueVerRes);
         zapRes = add10Procent(zapRes);
         lakRes = add10Procent(lakRes);
@@ -41,7 +43,8 @@ export function calcPlane({
 
     return {
         stone: fixGoodsNumber(stonesRes * stoneLayer),
-        grunt: fixGoodsNumber(gruntRes),
+        grunt1k: fixGoodsNumber(grunt1KRes),
+        grunt2k: fixGoodsNumber(grunt2KRes),
         glueVer: fixGoodsNumber(glueVerRes * stoneLayer),
         glueVerZ: fixGoodsNumber(glueVerZRes * stoneLayer),
         glueGor: fixGoodsNumber(glueGorRes * stoneLayer),

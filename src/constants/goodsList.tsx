@@ -3,7 +3,7 @@ import { IConsumptionStone, IGoodsList, ILayerStone, IStone } from "@/types/type
 export const MATERIALS_LIST = {
     gr: {
         code: "ГР",
-        name: "Грунтовка",
+        name: "Грунтовка 1К",
         description: "Грунтовка для бетона полиуретановая адгезионная, для каменного ковра",
         links: {
             ozon: { link: "https://ozon.ru/t/QW9RuWS", art: "ГР1", sku: "3316269233" },
@@ -19,7 +19,7 @@ export const MATERIALS_LIST = {
     },
     egr: {
         code: "ЭГР",
-        name: "Эпоксидная грунтовка",
+        name: "Эпоксидная грунтовка 2К",
         description:
             "Эпоксидная грунтовка праймер для бетона, дерева, металла адгезионная, гидроизоляционная",
         links: {
@@ -248,6 +248,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/wEQKrh6" },
             },
         },
+        isLight: true,
     },
     shok: {
         show: true,
@@ -264,6 +265,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/9odCoJz" },
             },
         },
+        isLight: false,
     },
     jem: {
         show: true,
@@ -280,6 +282,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/EIWda2P" },
             },
         },
+        isLight: true,
     },
     krm: {
         show: true,
@@ -296,6 +299,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/cFNQ5cP" },
             },
         },
+        isLight: true,
     },
     kasp: {
         show: true,
@@ -312,6 +316,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/4Ky5oHX" },
             },
         },
+        isLight: false,
     },
     chernomor: {
         show: true,
@@ -328,6 +333,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/4Ky5wE9" },
             },
         },
+        isLight: true,
     },
     grafit: {
         show: true,
@@ -344,6 +350,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/4Ky5wE9" },
             },
         },
+        isLight: true,
     },
     relikt: {
         show: true,
@@ -360,6 +367,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/EIWdLNx" },
             },
         },
+        isLight: true,
     },
     yashma: {
         show: true,
@@ -376,6 +384,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/sXIo3TN" },
             },
         },
+        isLight: false,
     },
     dalmatin: {
         show: true,
@@ -392,6 +401,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/8M5ZgjL" },
             },
         },
+        isLight: true,
     },
     cherkes: {
         show: true,
@@ -408,6 +418,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/8M5ZA0B" },
             },
         },
+        isLight: false,
     },
     medovaya: {
         show: true,
@@ -424,6 +435,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/LCq2JFc" },
             },
         },
+        isLight: true,
     },
     koshka: {
         show: true,
@@ -440,6 +452,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/1f76rZ1" },
             },
         },
+        isLight: true,
     },
     kot: {
         show: true,
@@ -456,6 +469,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/dw3tqqQ" },
             },
         },
+        isLight: true,
     },
     terrakot: {
         show: true,
@@ -472,6 +486,7 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/3Qruk3t" },
             },
         },
+        isLight: true,
     },
     bordo: {
         show: true,
@@ -488,5 +503,6 @@ export const STONES_LIST = {
                 links: { ozon: "https://ozon.ru/t/Crtz46a" },
             },
         },
+        isLight: false,
     },
 } as const;
